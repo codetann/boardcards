@@ -1,0 +1,32 @@
+@import url('./colors.css');
+@import url('./layout.css');
+@import url('./text.css');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: var(--primary-dark);
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  font-size: var(--text-md---regular);
+  color: var(--gray--900);
+
+}
+
+
+
+::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+  -webkit-appearance: none;
+  display: none;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+  z-index: -1;
+}

@@ -1,0 +1,162 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: red;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 0;
+  gap: 1rem;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6rem;
+  height: 6rem;
+  /* background: var(--secondary-dark); */
+  border-radius: 50%;
+}
+.title {
+  /* padding: 6rem 0; */
+  font-size: var(--display-xl---bold);
+  font-weight: 800;
+
+  background-image: var(--primary-gradient);
+  background-size: 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: var(--display-md);
+  font-weight: 400;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--alt-dark);
+}
+
+.game-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .game-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: center;
+    width: auto;
+  }
+}
+
+.game-card {
+  background: var(--secondary-dark);
+  box-shadow: var(--shadow--xl);
+  width: 100%;
+  border-radius: 1rem;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 500px;
+}
+
+.game-card h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  color: white;
+}
+
+.game-card p {
+  font-size: 1rem;
+  color: var(--alt-dark);
+  margin-bottom: 1rem;
+}
+
+.game-card-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 1rem;
+  background: lightblue;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-row {
+  margin-top: 2rem;
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.play-button {
+  background: rgba(255, 255, 255, 0.079);
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.heart-button {
+  background: transparent;
+  padding: 0.8rem 0.5rem;
+  border-radius: 0.3rem;
+  color: white;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background-image: var(--primary-gradient);
+  background-size: auto;
+  background-clip: content-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  outline: none;
+  /* remove blue overlay when clicked */
+  -webkit-tap-highlight-color: transparent;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+.header-button {
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  background: var(--secondary-dark);
+  border: none;
+}

@@ -1,0 +1,56 @@
+.modal-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+}
+
+.modal-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.modal-header button {
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  background: var(--secondary-dark);
+  border: none;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.close-button {
+  background: rgba(255, 255, 255, 0.079);
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: 800;
+
+  cursor: pointer;
+  border: 1px solid transparent;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.confirm-button {
+  /* make var(--primary-gradient) the background */
+  background: var(--primary-gradient);
+  padding: 1rem 2rem;
+  width: 100%;
+  color: white;
+  font-weight: 800;
+  border-radius: 0.5rem;
+  border: none;
+}
