@@ -2,7 +2,6 @@ export interface Player {
   id: number;
   name: string;
   color: string;
-  score: number;
 }
 
 export interface Game {
@@ -14,4 +13,11 @@ export interface Game {
   color: string;
   path: string;
   disabled: boolean;
+}
+
+export interface GameCardProps extends Game {
+  showFavorites: boolean;
+  isFavorite: boolean;
+  onToggleFavorite: () => void;
+  onNavigate: () => void;
 }

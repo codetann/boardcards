@@ -8,6 +8,7 @@ interface PlayersStore {
   addPlayer: (player: Player) => void;
   removePlayer: (id: string) => void;
   updatePlayer: (id: string, player: Partial<Player>) => void;
+  reset: () => void;
 }
 
 /**
@@ -16,7 +17,18 @@ interface PlayersStore {
 export const usePlayersStore = zustand<PlayersStore>(
   persist(
     (set) => ({
-      players: [],
+      players: [
+        {
+          id: 1,
+          name: "John Doe",
+          color: "error",
+        },
+        {
+          id: 2,
+          name: "Jane Doe",
+          color: "success",
+        },
+      ],
       addPlayer: (player: Partial<Player>) =>
         set((state: PlayersStore) => ({
           players: [...state.players, { id: generateId(), ...player }],
@@ -31,6 +43,10 @@ export const usePlayersStore = zustand<PlayersStore>(
             p.id === id ? { ...p, ...player } : p
           ),
         })),
+      reset: () =>
+        set({
+          players: [],
+        }),
     }),
     {
       name: "players",

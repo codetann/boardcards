@@ -1,3 +1,7 @@
+.container {
+  transition: all 0.3s ease-in-out;
+}
+
 .nav {
   width: 100%;
   display: flex;
@@ -8,13 +12,16 @@
 
 .nav-button {
   display: flex;
-  width: 3rem;
+
   height: 3rem;
   justify-content: center;
   align-items: center;
   border-radius: 1rem;
   background: transparent;
   border: none;
+  color: white;
+  gap: .3rem
+
 }
 
 .header {
@@ -24,13 +31,119 @@
   align-items: center;
 }
 
+.title {
+  background-image: var(--primary-gradient);
+  background-size: 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
 .button {
+  width: 4rem;
+  height: 4rem;
+  font-weight: bold;
+
+  border-radius:50%;
+  border: 2px solid transparent;
+  /* background: var(--primary-gradient); */
+  background: var(--secondary-dark);
+  box-shadow: var(--shadow--2xl);
+
   display: flex;
-  width: 3rem;
-  height: 3rem;
   justify-content: center;
   align-items: center;
-  border-radius: 1rem;
+  gap: 0.5rem;
+  color: white;
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+}
+
+.players-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
+
+.player {
+  color: white;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 5rem;
+  gap: 1rem;
+  padding: 1rem;
   background: var(--secondary-dark);
+  border-radius: 0.5rem;
+}
+
+.player-color {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.player-actions {
+  display: flex;
+  margin-left: auto;
+}
+
+.player-action {
+
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:none;
+  color: white;
+  margin-left: 1rem;
   border: none;
+}
+
+.bottomsheet-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.bottomsheet-input {
+  width: 100%;
+  font-weight: bold;
+  height: 3rem;
+  border-radius: 0.5rem;
+  border: 2px solid transparent;
+  background:rgba(255, 255, 255, 0.071);
+  box-shadow: var(--shadow--xl);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding-left: 1rem;;
+}
+
+.bottomsheet-button {
+  width: 100%;
+  font-weight: bold;
+  height: 3rem;
+  border-radius: 0.5rem;
+  border: 2px solid transparent;
+  background: var(--primary-gradient);
+  box-shadow: var(--shadow--xl);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }

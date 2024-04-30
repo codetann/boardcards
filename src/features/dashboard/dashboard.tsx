@@ -1,49 +1,78 @@
 import config from "../../config";
 import styles from "./dashboard.module.css";
-import type { Game } from "../../types";
+import type { Game, GameCardProps } from "../../types";
 import { motion } from "framer-motion";
-import { FaHeart, FaRegHeart, FaHome } from "react-icons/fa";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { IoIosSettings } from "react-icons/io";
 import { RiHome6Line, RiUserSettingsLine } from "react-icons/ri";
 import { IoSettingsOutline } from "react-icons/io5";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Motion } from "../../components";
+import { Motion, Page } from "../../components";
 import { FaR } from "react-icons/fa6";
 import { GiCardRandom } from "react-icons/gi";
+import { useFavoritesStore } from "../../stores";
 
 export default function Dashboard() {
+  const favoritesStore = useFavoritesStore();
+  const [showFavorites, setShowFavorites] = useState(false);
+
+  const toggleFavorites = () => {
+    setShowFavorites((showFavorites) => !showFavorites);
+  };
+
   return (
-    <Motion>
-      <main className="layout">
-        <Header />
-        <div className={styles["heading"]}>
-          {/* <div className={styles["icon"]}>
+    <Page>
+      <Header showFavorites={showFavorites} onShowFavorites={toggleFavorites} />
+      <motion.div
+        className={styles["heading"]}
+        initial={{ scale: 0.5, opacity: 0, y: 20 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+      >
+        {/* <div className={styles["icon"]}>
             <GiCardRandom size={48} color="white" opacity={0.7} />
           </div> */}
-          <h1 className={styles["title"]}>Boardcards</h1>
-          <p className={styles["subtitle"]}>
-            Scorecards for your favorite board games.
-          </p>
-        </div>
-        <motion.div
-          className={styles["game-list"]}
-          transition={{ staggerChildren: 0.5 }}
-        >
-          {config.games.map((game) => (
-            <GameCard key={game.id} {...game} />
-          ))}
-        </motion.div>
-      </main>
-    </Motion>
+        <motion.h1 className={styles["title"]}>Boardcards</motion.h1>
+        <p className={styles["subtitle"]}>
+          Scorecards for your favorite board games.
+        </p>
+      </motion.div>
+      <motion.div
+        className={styles["game-list"]}
+        transition={{ staggerChildren: 0.5 }}
+      >
+        {config.games.map((game) => (
+          <GameCard
+            key={game.id}
+            showFavorites={showFavorites}
+            onToggleFavorite={() => {
+              if (favoritesStore.isFavorite(game.id)) {
+                favoritesStore.removeFavorite(game.id);
+              } else {
+                favoritesStore.addFavorite(game.id);
+              }
+            }}
+            isFavorite={favoritesStore.isFavorite(game.id)}
+            onNavigate={() => {}}
+            {...game}
+          />
+        ))}
+      </motion.div>
+    </Page>
   );
 }
 
-function Header() {
+function Header({ onShowFavorites, showFavorites }: any) {
   const navigate = useNavigate();
   return (
-    <div className={styles["header"]}>
+    <motion.div
+      className={styles["header"]}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.1 }}
+    >
       <button className={styles["header-button"]}>
         <RiUserSettingsLine
           size={24}
@@ -52,14 +81,21 @@ function Header() {
         />
       </button>
 
-      <button className={styles["header-button"]}>
-        <FaRegHeart size={24} color="white" />
+      <button className={styles["header-button"]} onClick={onShowFavorites}>
+        {showFavorites ? (
+          <FaHeart size={24} color="#FF656D" />
+        ) : (
+          <FaRegHeart size={24} color="white" />
+        )}
       </button>
 
-      <button className={styles["header-button"]}>
+      <button
+        className={styles["header-button"]}
+        onClick={() => navigate("/settings")}
+      >
         <IoSettingsOutline size={24} color="white" />
       </button>
-    </div>
+    </motion.div>
   );
 }
 
@@ -71,23 +107,33 @@ function GameCard({
   path,
   color,
   disabled,
-}: Game) {
-  const [isFavorite, setIsFavorite] = useState(false);
+  isFavorite,
+  onToggleFavorite,
+  showFavorites,
+}: GameCardProps) {
   const navigate = useNavigate();
-
-  const toggleFavorite = () => {
-    setIsFavorite((isFavorite) => !isFavorite);
-  };
 
   const redirectToGame = () => {
     navigate(`/games${path}`);
   };
 
+  const checkIsVisible = () => {
+    if (!showFavorites) return true;
+    if (showFavorites && isFavorite) return true;
+    return false;
+  };
+
+  if (!checkIsVisible()) return null;
+
   return (
     <motion.div
       className={styles["game-card"]}
       initial={{ scale: 0.5, opacity: 0, y: 20 }}
-      whileInView={{ scale: 1, opacity: 1, y: 0 }}
+      animate={{
+        scale: 1,
+        opacity: 1,
+        y: 0,
+      }}
       transition={{
         type: "spring",
         stiffness: 200,
@@ -122,7 +168,7 @@ function GameCard({
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.5 }}
           transition={{ type: "spring", stiffness: 200 }}
-          onClick={toggleFavorite}
+          onClick={onToggleFavorite}
         >
           {isFavorite && <FaHeart color="#FF656D" size={22} />}
           {!isFavorite && <FaRegHeart color="#FF656D" size={22} />}
