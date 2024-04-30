@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 
-export default function Motion({ children }: any) {
+interface Props {
+  children: any;
+}
+export default function Motion({ children }: Props) {
   return (
     <motion.div
       id="main"

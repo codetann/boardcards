@@ -1,17 +1,13 @@
 import config from "../../config";
 import styles from "./dashboard.module.css";
-import type { Game, GameCardProps } from "../../types";
+import type { GameCardProps } from "../../types";
 import { motion } from "framer-motion";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { IoIosSettings } from "react-icons/io";
-import { RiHome6Line, RiUserSettingsLine } from "react-icons/ri";
 import { IoSettingsOutline } from "react-icons/io5";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Motion, Page } from "../../components";
-import { FaR } from "react-icons/fa6";
-import { GiCardRandom } from "react-icons/gi";
+import { Page } from "../../components";
 import { useFavoritesStore } from "../../stores";
 
 export default function Dashboard() {

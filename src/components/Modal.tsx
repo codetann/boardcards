@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { useModal } from "../hooks";
 import styles from "./modal.module.css";
-import { FaX } from "react-icons/fa6";
 
 export default function Modal() {
   const modal = useModal();

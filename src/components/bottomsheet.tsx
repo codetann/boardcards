@@ -26,7 +26,7 @@ export default function Bottomsheet() {
 
   // handle outside click
   useEffect(() => {
-    function handleClickOutside(event: any) {
+    function handleClickOutside(event) {
       if (ref.current && !ref.current.contains(event.target)) {
         bottomsheet.close();
       }

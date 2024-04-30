@@ -3,7 +3,7 @@ import styles from "./components.module.css";
 import { motion } from "framer-motion";
 import { VscDebugRestart } from "react-icons/vsc";
 
-export default function error() {
+export default function Error() {
   const [showError, setShowError] = useState(true);
 
   const handleOrientationChange = () => {

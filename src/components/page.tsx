@@ -1,7 +1,5 @@
-import { useEffect } from "react";
 import Modal from "./Modal";
 import Bottomsheet from "./bottomsheet";
-import { useBottomsheet, useModal } from "../hooks";
 
 interface PageProps {
   children: React.ReactNode;

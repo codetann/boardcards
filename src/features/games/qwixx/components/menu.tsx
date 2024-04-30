@@ -39,7 +39,7 @@ export default function Menu() {
     };
   }, [isOpen]);
 
-  const onClickOutside = (e: MouseEvent) => {};
+  const onClickOutside = () => {};
 
   const handleGameRestart = () => {
     modal.open({

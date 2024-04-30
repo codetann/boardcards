@@ -52,5 +52,5 @@ export const usePlayersStore = zustand<PlayersStore>(
       name: "players",
       storage: createJSONStorage(() => localStorage),
     }
-  ) as any
+  )
 );

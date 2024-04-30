@@ -8,7 +8,7 @@ import { usePlayersStore } from "../../stores/players.store";
 import { useModal } from "../../hooks";
 import { useFavoritesStore } from "../../stores";
 
-export default function settings() {
+export default function Settings() {
   const navigate = useNavigate();
   const playersStore = usePlayersStore();
   const qwixxStore = useQwixxStore();

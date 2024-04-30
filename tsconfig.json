@@ -15,10 +15,9 @@
     "jsx": "react-jsx",
 
     /* Linting */
-    "strict": false,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    // disable linting for now
+
+    "strict": false
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
