@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Page } from "../../components";
 import { useFavoritesStore } from "../../stores";
+import { RiUserSettingsLine } from "react-icons/ri";
 
 export default function Dashboard() {
   const favoritesStore = useFavoritesStore();
